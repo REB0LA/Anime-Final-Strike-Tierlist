@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+            .<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -109,12 +109,11 @@
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 10px;
         }
 
-        /* Cores dos Tiers */
-        .tier-top5 .tier-header { background: #e11d48; color: #fff; }
-        .tier-dps .tier-header { background: #ea580c; color: #fff; }
+        /* Cores de cada Tier */
+        .tier-mustget .tier-header { background: #e11d48; color: #fff; }
+        .tier-hybrid .tier-header { background: #ea580c; color: #fff; }
         .tier-hill .tier-header { background: #d97706; color: #fff; }
         .tier-alt .tier-header { background: #7c3aed; color: #fff; }
         .tier-support .tier-header { background: #0284c7; color: #fff; }
@@ -192,65 +191,82 @@
         </header>
 
         <main id="tierlist-container">
-            <!-- Os tiers serão carregados automaticamente pelo Javascript abaixo -->
+            <!-- Gerado via JavaScript -->
         </main>
     </div>
 
-    <!-- CONFIGURAÇÃO DOS PERSONAGENS (EDITÁVEL) -->
+    <!-- LISTA DE PERSONAGENS EDITÁVEL -->
     <script>
         const tierData = [
             {
-                tierId: "tier-top5",
-                tierName: "Top 5",
+                tierId: "tier-mustget",
+                tierName: "Must Get",
                 units: [
-                    { name: "Goku Ultra", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+1" },
-                    { name: "Sukuna", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+2" },
-                    { name: "Gojo", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+3" },
+                    { name: "Shanks", image: "https://placehold.co/150x150/1e2230/FFF?text=Shanks" },
+                    { name: "Smoker", image: "https://placehold.co/150x150/1e2230/FFF?text=Smoker" },
+                    { name: "Chopper", image: "https://placehold.co/150x150/1e2230/FFF?text=Chopper" }
                 ]
             },
             {
-                tierId: "tier-dps",
-                tierName: "Meta Dps",
+                tierId: "tier-hybrid",
+                tierName: "Meta Prog Dps (Hybrid)",
                 units: [
-                    { name: "Ichigo Final", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+4" },
-                    { name: "Naruto Baryon", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+5" }
+                    { name: "Shanks", image: "https://placehold.co/150x150/1e2230/FFF?text=Shanks" },
+                    { name: "Ichigo", image: "https://placehold.co/150x150/1e2230/FFF?text=Ichigo" },
+                    { name: "Byakuya", image: "https://placehold.co/150x150/1e2230/FFF?text=Byakuya" },
+                    { name: "Aizen", image: "https://placehold.co/150x150/1e2230/FFF?text=Aizen" },
+                    { name: "Sukuna", image: "https://placehold.co/150x150/1e2230/FFF?text=Sukuna" },
+                    { name: "Stark", image: "https://placehold.co/150x150/1e2230/FFF?text=Stark" }
                 ]
             },
             {
                 tierId: "tier-hill",
-                tierName: "Meta Hill Dps",
+                tierName: "Meta Prog Dps (Hill)",
                 units: [
-                    { name: "Lelouch", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+6" },
-                    { name: "Uryu Ishida", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+7" }
+                    { name: "Picollo", image: "https://placehold.co/150x150/1e2230/FFF?text=Picollo" },
+                    { name: "Toshiro", image: "https://placehold.co/150x150/1e2230/FFF?text=Toshiro" },
+                    { name: "Harribel", image: "https://placehold.co/150x150/1e2230/FFF?text=Harribel" },
+                    { name: "Ace", image: "https://placehold.co/150x150/1e2230/FFF?text=Ace" },
+                    { name: "Haumiya", image: "https://placehold.co/150x150/1e2230/FFF?text=Haumiya" }
                 ]
             },
             {
                 tierId: "tier-alt",
                 tierName: "Good Alternatives",
                 units: [
-                    { name: "Rengoku", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+8" },
-                    { name: "Killua", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+9" }
+                    { name: "Toji", image: "https://placehold.co/150x150/1e2230/FFF?text=Toji" },
+                    { name: "Qifrey", image: "https://placehold.co/150x150/1e2230/FFF?text=Qifrey" },
+                    { name: "Nanami", image: "https://placehold.co/150x150/1e2230/FFF?text=Nanami" },
+                    { name: "Julius", image: "https://placehold.co/150x150/1e2230/FFF?text=Julius" },
+                    { name: "Vasto Lorde", image: "https://placehold.co/150x150/1e2230/FFF?text=Vasto+Lorde" },
+                    { name: "Goku Black", image: "https://placehold.co/150x150/1e2230/FFF?text=Goku+Black" }
                 ]
             },
             {
                 tierId: "tier-support",
-                tierName: "Meta Support",
+                tierName: "Meta Prog Supports",
                 units: [
-                    { name: "Erwin", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+10" },
-                    { name: "Bulma", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+11" }
+                    { name: "Smoker", image: "https://placehold.co/150x150/1e2230/FFF?text=Smoker" },
+                    { name: "Shanks", image: "https://placehold.co/150x150/1e2230/FFF?text=Shanks" },
+                    { name: "Chopper", image: "https://placehold.co/150x150/1e2230/FFF?text=Chopper" },
+                    { name: "King", image: "https://placehold.co/150x150/1e2230/FFF?text=King" },
+                    { name: "Sukuna", image: "https://placehold.co/150x150/1e2230/FFF?text=Sukuna" },
+                    { name: "Toshiro", image: "https://placehold.co/150x150/1e2230/FFF?text=Toshiro" },
+                    { name: "Haumiya", image: "https://placehold.co/150x150/1e2230/FFF?text=Haumiya" },
+                    { name: "Orihime", image: "https://placehold.co/150x150/1e2230/FFF?text=Orihime" }
                 ]
             },
             {
                 tierId: "tier-farms",
                 tierName: "Farms",
                 units: [
-                    { name: "Speedwagon", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+12" },
-                    { name: "Idol", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+13" }
+                    { name: "Chopper", image: "https://placehold.co/150x150/1e2230/FFF?text=Chopper" },
+                    { name: "Nami", image: "https://placehold.co/150x150/1e2230/FFF?text=Nami" },
+                    { name: "Yumeko", image: "https://placehold.co/150x150/1e2230/FFF?text=Yumeko" }
                 ]
             }
         ];
 
-        // Função que renderiza a página
         function renderTierlist() {
             const container = document.getElementById("tierlist-container");
             container.innerHTML = "";
@@ -280,7 +296,6 @@
             });
         }
 
-        // Sistema de busca rápida
         function filterUnits() {
             const search = document.getElementById("searchInput").value.toLowerCase();
             const cards = document.querySelectorAll(".unit-card");
