@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Final Strike Tierlist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0d0f17;
+            --bg-secondary: #161926;
+            --bg-card: #1f2335;
+            --text-primary: #ffffff;
+            --text-secondary: #8a90a2;
+            --border-color: #2b3049;
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .author {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .author span {
+            color: #6366f1;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 450px;
+            padding: 12px 20px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-box:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Tier Sections */
+        .tier-section {
+            background-color: var(--bg-secondary);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .tier-header {
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Cores dos Tiers */
+        .tier-top5 .tier-header { background: #e11d48; color: #fff; }
+        .tier-dps .tier-header { background: #ea580c; color: #fff; }
+        .tier-hill .tier-header { background: #d97706; color: #fff; }
+        .tier-alt .tier-header { background: #7c3aed; color: #fff; }
+        .tier-support .tier-header { background: #0284c7; color: #fff; }
+        .tier-farms .tier-header { background: #16a34a; color: #fff; }
+
+        /* Grid de Personagens */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .unit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 8px;
+            text-align: center;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .unit-card:hover {
+            transform: translateY(-4px);
+            border-color: #6366f1;
+        }
+
+        .unit-img-wrapper {
+            width: 100%;
+            aspect-ratio: 1/1;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #11141e;
+            margin-bottom: 8px;
+        }
+
+        .unit-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .unit-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            word-break: break-word;
+            line-height: 1.2;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 10px;
+                padding: 10px;
+            }
+            .unit-name { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Anime Final Strike Tierlist</h1>
+            <p class="author">Made By: <span>RB26D</span></p>
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-box" placeholder="Pesquisar personagem..." onkeyup="filterUnits()">
+            </div>
+        </header>
+
+        <main id="tierlist-container">
+            <!-- Os tiers serão carregados automaticamente pelo Javascript abaixo -->
+        </main>
+    </div>
+
+    <!-- CONFIGURAÇÃO DOS PERSONAGENS (EDITÁVEL) -->
+    <script>
+        const tierData = [
+            {
+                tierId: "tier-top5",
+                tierName: "Top 5",
+                units: [
+                    { name: "Goku Ultra", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+1" },
+                    { name: "Sukuna", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+2" },
+                    { name: "Gojo", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+3" },
+                ]
+            },
+            {
+                tierId: "tier-dps",
+                tierName: "Meta Dps",
+                units: [
+                    { name: "Ichigo Final", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+4" },
+                    { name: "Naruto Baryon", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+5" }
+                ]
+            },
+            {
+                tierId: "tier-hill",
+                tierName: "Meta Hill Dps",
+                units: [
+                    { name: "Lelouch", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+6" },
+                    { name: "Uryu Ishida", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+7" }
+                ]
+            },
+            {
+                tierId: "tier-alt",
+                tierName: "Good Alternatives",
+                units: [
+                    { name: "Rengoku", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+8" },
+                    { name: "Killua", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+9" }
+                ]
+            },
+            {
+                tierId: "tier-support",
+                tierName: "Meta Support",
+                units: [
+                    { name: "Erwin", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+10" },
+                    { name: "Bulma", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+11" }
+                ]
+            },
+            {
+                tierId: "tier-farms",
+                tierName: "Farms",
+                units: [
+                    { name: "Speedwagon", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+12" },
+                    { name: "Idol", image: "https://placehold.co/150x150/1e2230/FFF?text=Unit+13" }
+                ]
+            }
+        ];
+
+        // Função que renderiza a página
+        function renderTierlist() {
+            const container = document.getElementById("tierlist-container");
+            container.innerHTML = "";
+
+            tierData.forEach(tier => {
+                const section = document.createElement("div");
+                section.className = `tier-section ${tier.tierId}`;
+
+                let unitsHTML = "";
+                tier.units.forEach(unit => {
+                    unitsHTML += `
+                        <div class="unit-card" data-name="${unit.name.toLowerCase()}">
+                            <div class="unit-img-wrapper">
+                                <img src="${unit.image}" alt="${unit.name}" loading="lazy">
+                            </div>
+                            <span class="unit-name">${unit.name}</span>
+                        </div>
+                    `;
+                });
+
+                section.innerHTML = `
+                    <div class="tier-header">${tier.tierName}</div>
+                    <div class="card-grid">${unitsHTML}</div>
+                `;
+
+                container.appendChild(section);
+            });
+        }
+
+        // Sistema de busca rápida
+        function filterUnits() {
+            const search = document.getElementById("searchInput").value.toLowerCase();
+            const cards = document.querySelectorAll(".unit-card");
+
+            cards.forEach(card => {
+                const name = card.getAttribute("data-name");
+                if (name.includes(search)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        renderTierlist();
+    </script>
+</body>
+</html>
